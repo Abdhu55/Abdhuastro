@@ -1,4 +1,7 @@
 ---
+// import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const pageTitle = "My Home Page";
 
 import '../styles/global.css';
@@ -21,15 +24,17 @@ import '../styles/global.css';
 	</head>
 	<body>
 		<header>
-			<nav>
-			     <ul>
-		             <a href="http://localhost:4321/">Home</a>
-                     <a href="http://localhost:4321/about">About</a>
-                     <a href="http://localhost:4321/blog">Blog</a>
-			     </ul>
-			</nav>
+		<!-- <a href="http://localhost:4321/">Home</a>
+        <a href="http://localhost:4321/about">About</a>
+	    <a href="http://localhost:4321/blog">Blog</a> -->
+		<!-- <Navigation />	 -->
+		 <Header />
 		</header>
 		<h1>{pageTitle}</h1>
 		<p>Hey i am Abdul rahman, final year student of Electronics </p>
+		<Footer />
+		<script>
+			import "../scripts/menu.js";
+		  </script>  
 	</body>
 </html
