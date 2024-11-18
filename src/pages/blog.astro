@@ -1,10 +1,16 @@
+---
+const pageTitle = "My Astro learning Blog";
+---
+
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>AstroBlog</title>
+		<!-- <title>AstroBlog</title> -->
+		 <title>{pageTitle}</title>
 	</head>
 	<body>
         <header>
@@ -16,14 +22,19 @@
 			     </ul>
 			</nav>
 		</header>
-        <h1>My Astro Site</h1>
-        <h1>My Astro Learning Blog</h1>
-        <p>This is where I will post about my journey learning Astro.</p>
+        <!-- <h1>My Astro Site</h1> -->
+        <h1>{pageTitle}</h1>
+       
         <p>Welcome to our blog, where we share in-depth articles on topics that matter most to you. From the latest industry trends to personal growth advice, our blog has something for everyone.</p>
         <p>In our latest post, we dive into the world of web development and explore the best practices for building responsive websites. Be sure to check it out!</p>
         <p>We’ve received incredible feedback on our latest post, and it’s been a pleasure seeing how it has helped our readers. Thank you for your support and engagement!</p>
         <p>We’d love to hear your thoughts! Leave a comment below and join the discussion. Your opinions and insights are always welcome here.</p>
         <p>Thanks for reading! We hope you found this post helpful. Be sure to check out our other articles and let us know what you’d like to see next.</p>
-
+        <p>This is where I will post about my journey learning Astro.</p>
+		<ul>
+			<li><a href="http://localhost:4321/posts/post-1">Post 1</a></li>
+			<li><a href="http://localhost:4321/posts/post-2">Post 2</a></li>
+			<li><a href="http://localhost:4321/posts/post-3">Post 3</a></li>
+		  </ul>
 	</body>
 </html
