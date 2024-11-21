@@ -78,4 +78,11 @@ html {
       display: none;
     }
   }
+  html.dark {
+    background-color: #119dfb;
+    color: #fff;
+  }
   
+  .dark .nav-links a {
+    color: #fff;
+  }
