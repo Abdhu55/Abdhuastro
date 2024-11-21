@@ -1,40 +1,9 @@
 ---
-// import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-const pageTitle = "My Home Page";
-
-import '../styles/global.css';
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
 ---
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My Awesome blog subtitle</h2>
+  <p>Hey i am Abdul rahman, final year student of Electronics </p>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style>
-			h1 {
-			  color: black;
-			  font-size: 2.5rem;
-			}
-		  </style>
-	</head>
-	<body>
-		<header>
-		<!-- <a href="http://localhost:4321/">Home</a>
-        <a href="http://localhost:4321/about">About</a>
-	    <a href="http://localhost:4321/blog">Blog</a> -->
-		<!-- <Navigation />	 -->
-		 <Header />
-		</header>
-		<h1>{pageTitle}</h1>
-		<p>Hey i am Abdul rahman, final year student of Electronics </p>
-		<Footer />
-		<script>
-			import "../scripts/menu.js";
-		  </script>  
-	</body>
-</html
+</BaseLayout>

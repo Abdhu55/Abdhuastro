@@ -1,0 +1,130 @@
+---
+const { frontmatter } = Astro.props;
+import BaseLayout from "./BaseLayout.astro"
+---
+
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{frontmatter.title}</title>
+    <meta name="description" content={frontmatter.description} />
+    <meta name="author" content={frontmatter.author} />
+  </head>
+  <body>
+    <article class="blog-post">
+      <header class="blog-header">
+        <h1 class="blog-title">{frontmatter.title}</h1>
+        <p class="blog-meta">
+          <span><strong>Published on:</strong> {new Date(frontmatter.pubDate).toLocaleDateString()}</span> | 
+          <span><strong>Author:</strong> {frontmatter.author}</span>
+        </p>
+        {frontmatter.description && <p class="blog-description">{frontmatter.description}</p>}
+        {frontmatter.image && (
+          <div class="blog-image">
+            <img src={frontmatter.image.url} width="400px" alt={frontmatter.image.alt} />
+          </div>
+        )}
+      </header>
+      <section class="blog-content">
+        <slot />
+      </section>
+      <footer class="blog-footer">
+        <p>Thank you for reading! Feel free to share your thoughts in the comments below.</p>
+        <p><em>Stay tuned for more updates on my learning journey!</em></p>
+      </footer>
+    </article>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        color: #333;
+        padding: 20px;
+      }
+
+      /* Article Container */
+      .blog-post {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      /* Header Styling */
+      .blog-header {
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+
+      .blog-title {
+        font-size: 2.2rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .blog-meta {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+      }
+
+      .blog-description {
+        font-size: 1rem;
+        color: #34495e;
+        margin: 15px 0;
+      }
+
+      .blog-image img {
+        margin: 15px 0;
+        border-radius: 4px;
+        max-width: 100%;
+      }
+
+      /* Content Section */
+      .blog-content {
+        padding: 20px;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+
+      /* Footer Styling */
+      .blog-footer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #f1f1f1;
+        text-align: center;
+      }
+
+      .blog-footer p {
+        margin: 10px 0;
+        font-size: 0.9rem;
+        color: #7f8c8d;
+        font-style: italic;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .blog-title {
+          font-size: 1.8rem;
+        }
+
+        .blog-content {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </body>
+</html>

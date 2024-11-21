@@ -1,95 +1,41 @@
 ---
-// import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-
-import Footer from '../components/Footer.astro';
-
-import '../styles/global.css';
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "About Me";
 
 const identity = {
-  firstName: "Abdul Rahman",
-  country: "Chennai",
-  occupation: "Technical Writer",
-  hobbies: ["photography",  "Exploring"],
+	firstName: "Abdul Rahman",
+	country: "Chennai",
+	occupation: "Technical Writer",
+	hobbies: ["photography", "exploring"],
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
 const happy = true;
 const finished = false;
 const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase";
-
-
 ---
 
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<!-- <title>About Us</title> -->
-		<title>{pageTitle}</title>
-		<style define:vars={{skillColor}}>
-			h1 {
-			  color: purple;
-			  font-size: 3.3rem;
-			}
-			.skill {
-              /* color: green; */
-			  /* color: var(--skillColor);
-              font-weight: bold; */
-			  color: var(--skillColor);
-              font-weight: var(--fontWeight);
-              text-transform: var(--textCase);
-            }
-		  </style>
-	</head>
-	<body>
-        <header>
-			<nav>
-			     <ul>
-					<!-- <Navigation /> -->
-					<Header />
-		             <!-- <a href="http://localhost:4321/">Home</a>
-                     <a href="http://localhost:4321/about">About</a>
-                     <a href="http://localhost:4321/blog">Blog</a> -->
-			     </ul>
-			</nav>
-		</header>
-            <!-- <h1>About Me</h1> -->
-			<h1>{pageTitle}</h1>
-            <h2>... and my new Astro site!</h2>
-          
-            <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-			<p>Here are a few facts about me:</p>
-			<ul>
-      			  <li>My name is {identity.firstName}.</li>
-	     		  <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-		    	  {identity.hobbies.length >= 2 &&
-			    	<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-			      }
-			</ul>
-			<p>My skills are:</p>
-			  <ul>
-			      {skills.map((skill) => <li class="skill">{skill}</li>)}
-			   </ul>
-            <!-- <p>Welcome to our website! We are dedicated to providing high-quality content and valuable resources to our readers. Our mission is to help people discover and learn more about topics that matter.</p>
-            <p>This website was created to share useful insights, tips, and guides on a variety of topics. Whether you're here to learn about technology, lifestyle, or personal growth, we strive to offer content that inspires and educates.</p>
-            <p>Our mission is simple: to provide informative content that helps you grow and succeed. We believe in the power of knowledge and are passionate about sharing it with others.</p>
-            <p>Our team is made up of experts from various fields who are committed to delivering quality content. With years of experience and a passion for sharing knowledge, we are excited to continue helping you grow!</p> -->
-			<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-            
-			{happy && <p>I am happy to be learning Astro!</p>}
-            {finished && <p>I finished this tutorial!</p>}
-            {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-			<Footer />
-		</body>
-</html
+<BaseLayout pageTitle={pageTitle}>
+	<h2>... and my new Astro site!</h2>
+	<p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+	<p>Here are a few facts about me:</p>
+	<ul>
+		<li>My name is {identity.firstName}.</li>
+		<li>I live in {identity.country} and work as a {identity.occupation}.</li>
+		{identity.hobbies.length >= 2 && (
+			<li>
+				Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+			</li>
+		)}
+	</ul>
+	<p>My skills are:</p>
+	<ul>
+		{skills.map((skill) => (
+			<li class="skill">{skill}</li>
+		))}
+	</ul>
+	<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+	{happy && <p>I am happy to be learning Astro!</p>}
+	{finished && <p>I finished this tutorial!</p>}
+	{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+</BaseLayout>

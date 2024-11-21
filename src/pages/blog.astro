@@ -1,55 +1,26 @@
 ---
-// import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-const pageTitle = "My Astro learning Blog";
-
-import '../styles/global.css';
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+const allPosts = await Astro.glob('./posts/*.md');
+const pageTitle = "My Astro Learning Blog";
 ---
 
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<!-- <title>AstroBlog</title> -->
-		 <title>{pageTitle}</title>
-		 <style>
-			h1 {
-			  color: black;
-			  font-size: 2.5rem;
-			}
-		  </style>
-	</head>
-	<body>
-        <header>
-			<nav>
-			     <ul>
-		             <!-- <a href="http://localhost:4321/">Home</a>
-                     <a href="http://localhost:4321/about">About</a>
-                     <a href="http://localhost:4321/blog">Blog</a> -->
-					 <!-- <Navigation /> -->
-					 <Header />
-			     </ul>
-			</nav>
-		</header>
-        <!-- <h1>My Astro Site</h1> -->
-        <h1>{pageTitle}</h1>
-       
-        <p>Welcome to our blog, where we share in-depth articles on topics that matter most to you. From the latest industry trends to personal growth advice, our blog has something for everyone.</p>
-        <p>In our latest post, we dive into the world of web development and explore the best practices for building responsive websites. Be sure to check it out!</p>
-        <p>We’ve received incredible feedback on our latest post, and it’s been a pleasure seeing how it has helped our readers. Thank you for your support and engagement!</p>
-        <p>We’d love to hear your thoughts! Leave a comment below and join the discussion. Your opinions and insights are always welcome here.</p>
-        <p>Thanks for reading! We hope you found this post helpful. Be sure to check out our other articles and let us know what you’d like to see next.</p>
-        <p>This is where I will post about my journey learning Astro.</p>
-		<ul>
-			<li><a href="http://localhost:4321/posts/post-1">Post 1</a></li>
-			<li><a href="http://localhost:4321/posts/post-2">Post 2</a></li>
-			<li><a href="http://localhost:4321/posts/post-3">Post 3</a></li>
-		  </ul>
-		  <Footer />
-	</body>
-</html
+<BaseLayout pageTitle={pageTitle}>
+	<p>
+		Welcome to our blog, where we share in-depth articles on topics that matter most to you. From the latest
+		industry trends to personal growth advice, our blog has something for everyone.
+	</p>
+	<p>
+		In our latest post, we dive into the world of web development and explore the best practices for building
+		responsive websites. Be sure to check it out!
+	</p>
+	<p>We’d love to hear your thoughts! Leave a comment below and join the discussion.</p>
+	<p>Thanks for reading! We hope you found this post helpful. Be sure to check out our other articles!</p>
+	<ul>
+		<!-- <li><a href="http://localhost:4321/posts/post-1">Post 1</a></li>
+		<li><a href="http://localhost:4321/posts/post-2">Post 2</a></li>
+		<li><a href="http://localhost:4321/posts/post-3">Post 3</a></li> -->
+		<!-- {allPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)} -->
+		{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+	</ul>
+</BaseLayout>
