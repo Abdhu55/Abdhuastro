@@ -1,8 +1,54 @@
 ---
 ---
-<div class="nav-links">
-   <a href="http://localhost:4321/">Home</a>
-   <a href="http://localhost:4321/about">About</a>
-   <a href="http://localhost:4321/blog">Blog</a>
-   <a href="/tags/">Tags</a>
-</div>
+<div class="nav-container">
+   <!-- Hamburger Toggle Button -->
+   <button class="menu-toggle" id="menu-toggle">☰</button>
+ 
+   <!-- Navigation Links -->
+   <div class="nav-links" id="menu">
+     <a href="http://localhost:4321/">Home</a>
+     <a href="http://localhost:4321/about">About</a>
+     <a href="http://localhost:4321/blog">Blog</a>
+     <a href="/tags/">Tags</a>
+   </div>
+ </div>
+ <script>
+   document.getElementById('menu-toggle').addEventListener('click', () => {
+     const menu = document.getElementById('menu');
+     menu.classList.toggle('active');
+   });
+ </script>
+ <style>
+   .menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Show menu toggle on small screens */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show hamburger icon on mobile */
+  }
+  
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu when active */
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Spacing between links */
+  }
+}
+ </style>
