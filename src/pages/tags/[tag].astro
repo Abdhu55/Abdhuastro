@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../posts/*.md');
+  const tags = [...new Set(allPosts.flatMap((post) => post.frontmatter.tags || []))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { posts: allPosts },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+// Filter posts by the current tag
+const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+---
+<BaseLayout pageTitle={`Posts tagged: ${tag}`}>
+  <p>Posts tagged with <strong>{tag}</strong>:</p>
+  <ul>
+    {filteredPosts.map((post) => (
+      <li><a href={post.url}>{post.frontmatter.title}</a></li>
+    ))}
+  </ul>
+</BaseLayout>
